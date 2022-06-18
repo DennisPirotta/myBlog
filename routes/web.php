@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+App::setLocale("it");
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('register', [UserController::class, 'create']);
+
+// Create new user
+
+Route::post("/users", [UserController::class, 'store']);
